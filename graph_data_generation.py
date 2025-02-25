@@ -67,6 +67,6 @@ hier_graph = hierarchical_builder.GenerateHierarchicalDAG()
 print('-- Done building hierarchical graph')
 
 print('-- Saving')
-nx.write_adjlist(ber_graph, './data/graph/bernoulli_adj')
+nx.write_adjlist(ber_graph, './data/graph/bernoulli.adjlist')
 print('-- Saving')
-nx.write_adjlist(hier_graph, './data/graph/hierarchical_adj')
+nx.write_adjlist(hier_graph, './data/graph/hierarchical.adjlist')
