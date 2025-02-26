@@ -7,17 +7,23 @@ import numpy as np
 input_file_path = os.path.join(os.path.dirname(__file__), 'input.txt')
 
 # positive samples
-possitive_path = os.path.join(os.path.dirname(__file__), 'bernoulli_positive.txt')
+possitive_path = os.path.join(os.path.dirname(__file__), 'positive.txt')
 # negative samples
-negative_path = os.path.join(os.path.dirname(__file__), 'bernoulli_negative.txt')
+negative_path = os.path.join(os.path.dirname(__file__), 'negative.txt')
+# edges
+edges = os.path.join(os.path.dirname(__file__), 'edge.txt')
 
 print('Reading precomputed graph paths')
+with open(possitive_path, 'r', encoding='utf-8') as f:
+    positive_data = f.read()
+
 with open(possitive_path, 'r', encoding='utf-8') as f:
     positive_data = f.read()
 
 with open(negative_path, 'r', encoding='utf-8') as f:
     negative_data = f.read()
 
+n_edges = len()
 n_positive = len(positive_data)
 n_negative = len(negative_data)
 print(f'Number of positive samples: {n_positive}')

@@ -25,28 +25,17 @@ hier_negative_set = []
 
 for i in range(1,200):
     source = 'X'+str(i)
-    for j in range(i,i+1):
+    for j in range(i+1,201):
         target = 'X'+str(j)
         paths = list(nx.all_simple_paths(ber_graph, source, target, 6))
         if len(paths) > 0:
             print(f'Positive pair [{source},{target}]')
             for path in paths:
                 sample = target + ' ' + ' '.join(path) + ' p1'
-                ber_edge.append(sample)
-        else:
-            print(f'Negative pair [{source},{target}]')
-            ber_negative_set.append(f'{target} {source} p0')
-
-for i in range(1,199):
-    source = 'X'+str(i)
-    for j in range(i+2,201):
-        target = 'X'+str(j)
-        paths = list(nx.all_simple_paths(ber_graph, source, target, 6))
-        if len(paths) > 0:
-            print(f'Positive pair [{source},{target}]')
-            for path in paths:
-                sample = target + ' ' + ' '.join(path) + ' p1'
-                ber_positive_set.append(sample)
+                if len(path) == 2:
+                    ber_edge.append(sample)
+                else:
+                    ber_positive_set.append(sample)
         else:
             print(f'Negative pair [{source},{target}]')
             ber_negative_set.append(f'{target} {source} p0')
