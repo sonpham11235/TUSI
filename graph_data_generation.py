@@ -6,7 +6,7 @@ class BernoulliBuilder:
     def __init__(self, n, p):
         self.n = n
         self.p = p
-        self.node_names = ['X' + str(i) for i in range(n)]
+        self.node_names = ['X' + str(i+1) for i in range(n)]
         self.digraph = nx.DiGraph()
     
     def CreateUpperTriangularMask(self):
@@ -23,7 +23,7 @@ class BernoulliBuilder:
         while not nx.is_weakly_connected(self.digraph):
             self.digraph = self.CreateSparseGraph()
             mask = self.CreateUpperTriangularMask()
-            self.digraph.add_edges_from((('X' + str(int(e[0])), 'X' + str(int(e[1]))) for e in zip(*mask.nonzero())))
+            self.digraph.add_edges_from((('X' + str(int(e[0])+1), 'X' + str(int(e[1])+1)) for e in zip(*mask.nonzero())))
         return self.digraph
     
 class HierarchicalBuilder:
@@ -31,7 +31,7 @@ class HierarchicalBuilder:
         self.num_nodes_per_layer = num_nodes_per_layer
         self.num_layers = num_layers
         self.num_nodes = num_nodes_per_layer * num_layers
-        self.node_names = ['X' + str(i) for i in range(self.num_nodes)]
+        self.node_names = ['X' + str(i+1) for i in range(self.num_nodes)]
         self.digraph = nx.DiGraph()
         self.p = p
 
@@ -46,11 +46,11 @@ class HierarchicalBuilder:
             self.digraph = self.CreateSparseGraph()
             for i in range(self.num_layers-1):
                 for j in range(self.num_nodes_per_layer):
+                    source = (i * self.num_nodes_per_layer) + j
                     for k in range(self.num_nodes_per_layer):
+                        target = ((i+1) * self.num_nodes_per_layer) + k
                         if random.uniform(0.0, 1.0) <= self.p:
-                            num1 = (i * self.num_nodes_per_layer) + j
-                            num2 = ((i+1) * self.num_nodes_per_layer) + k
-                            self.digraph.add_edge('X'+str(num1), 'X'+str(num2))
+                            self.digraph.add_edge('X'+str(source + 1), 'X'+str(target + 1))
         return self.digraph
 
 bernoulli_builder = BernoulliBuilder(200, 0.05)
