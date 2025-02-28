@@ -8,6 +8,8 @@ import torch
 import tiktoken
 from model import GPTConfig, GPT
 
+# python sample.py --device=cpu --out_dir=out-graph --start="X130 X1" --num_samples=1 --max_new_tokens=100
+
 # -----------------------------------------------------------------------------
 init_from = 'resume' # either 'resume' (from an out_dir) or a gpt2 variant (e.g. 'gpt2-xl')
 out_dir = 'out' # ignored if init_from is not 'resume'
