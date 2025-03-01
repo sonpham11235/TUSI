@@ -1,4 +1,4 @@
-# python train.py config/train_graph_cpu.py--eval_iters=200 --log_interval=200 --block_size=64 --batch_size=64 --n_layer=4 --n_head=4 --n_embd=64 --max_iters=10000 --lr_decay_iters=10000 --dropout=0.0
+# python train.py config/train_graph_cpu.py --compile=False --eval_iters=200 --log_interval=100 --block_size=64 --batch_size=64 --n_layer=4 --n_head=4 --n_embd=64 --max_iters=10000 --lr_decay_iters=10000 --dropout=0.0
 
 
 # train a miniature character-level shakespeare model

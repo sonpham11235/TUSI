@@ -64,6 +64,14 @@ random.shuffle(validation)
 n_validation = len(validation)
 print(f'Number of validation samples {n_validation}')
 
+with open('./data/graph/bernoulli/train.txt', 'w') as file:
+    for sample in train:
+        file.write(f'{sample}')
+
+with open('./data/graph/bernoulli/validation.txt', 'w') as file:
+    for sample in validation:
+        file.write(f'{sample}')
+
 # # encode with tiktoken gpt2 bpe
 enc = tiktoken.get_encoding("gpt2")
 train_ids = []
