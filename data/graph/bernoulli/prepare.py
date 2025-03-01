@@ -4,6 +4,13 @@ import tiktoken
 import random
 import numpy as np
 
+def special_tokens(num):
+    tokens = []
+    for i in range(1, num+1):
+        tokens.append('X'+str(i))
+    tokens.append('p0')
+    tokens.append('p1')
+
 def read_file(path):
     try:
         data = []

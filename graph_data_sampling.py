@@ -3,7 +3,7 @@ import networkx as nx
 import random
 
 def make_sample(is_positive: bool, source: str, target: str, path: tuple):
-    template = "[CLS] {target_str} {source_str} [SEP] {path_str} {answer} [EOS]"
+    template = "<|question|>{target_str} {source_str}<|answer|>{path_str} {answer}<|endoftext|>"
     path_str = ' '.join(path)
     sample = ''
     if is_positive:
