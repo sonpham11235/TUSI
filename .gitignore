@@ -1,2 +1,4 @@
 venv/*
-out-graph/*
+
+*.bin
+*.ckpt
