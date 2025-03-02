@@ -89,5 +89,7 @@ with torch.no_grad():
     with ctx:
         for k in range(num_samples):
             y = model.generate(x, max_new_tokens, temperature=temperature, top_k=top_k)
-            print(decode(y[0].tolist()))
+            model_output = str(decode(y[0].tolist()))
+            meaningfull = model_output.split('<|endoftext|>')[0]
+            print(meaningfull)
             print('---------------')
