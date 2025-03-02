@@ -1,0 +1,9 @@
+- Some positive samples included in the train set
+<|question|>X166 X1
+<|question|>X195 X34
+<|question|>X137 X35
+
+- Some negative samples NOT inciuded in the train set
+<|question|>X197 X34
+<|question|>X154 X39
+<|question|>X106 X40
