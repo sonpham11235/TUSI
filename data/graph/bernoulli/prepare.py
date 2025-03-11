@@ -23,7 +23,7 @@ def read_file(path):
         return []
 
 # positive samples
-possitive_path = os.path.join(os.path.dirname(__file__), 'positive.txt')
+possitive_path = os.path.join(os.path.dirname(__file__), 'positive_direct.txt')
 # negative samples
 negative_path = os.path.join(os.path.dirname(__file__), 'negative.txt')
 # edges
@@ -64,11 +64,11 @@ random.shuffle(validation)
 n_validation = len(validation)
 print(f'Number of validation samples {n_validation}')
 
-with open('./data/graph/bernoulli/train.txt', 'w') as file:
+with open('./data/graph/bernoulli/train_direct.txt', 'w') as file:
     for sample in train:
         file.write(f'{sample}')
 
-with open('./data/graph/bernoulli/validation.txt', 'w') as file:
+with open('./data/graph/bernoulli/validation_direct.txt', 'w') as file:
     for sample in validation:
         file.write(f'{sample}')
 
@@ -87,8 +87,8 @@ print(f"val has {len(val_ids):,} tokens")
 # export to bin files
 train_ids = np.concatenate([np.array(sample, dtype=np.uint16) for sample in train_ids])
 val_ids = np.concatenate([np.array(sample, dtype=np.uint16) for sample in val_ids])
-train_ids.tofile(os.path.join(os.path.dirname(__file__), 'train.bin'))
-val_ids.tofile(os.path.join(os.path.dirname(__file__), 'val.bin'))
+train_ids.tofile(os.path.join(os.path.dirname(__file__), 'train_direct.bin'))
+val_ids.tofile(os.path.join(os.path.dirname(__file__), 'val_direct.bin'))
 
 # train.bin has 18,054 tokens
 # val.bin has 1,804 tokens
