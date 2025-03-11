@@ -67,7 +67,7 @@ class model:
 
 @st.cache_resource
 def load_model():
-    return model('out-graph')
+    return model('stepwise-ckpt')
 
 @st.cache_resource
 def load_graph() -> nx.DiGraph:
