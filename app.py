@@ -97,5 +97,8 @@ if source and target:
     # subgraph involved
     graph = load_graph()
     paths = nx.all_simple_paths(graph, source, target, 6)
-    subgraph = build_subgraph(paths)
-    st.graphviz_chart(subgraph)
+    if len(paths) > 0:
+        subgraph = build_subgraph(paths)
+        st.graphviz_chart(subgraph)
+    else:
+        st.warning(f'No path between {source} and {target}')

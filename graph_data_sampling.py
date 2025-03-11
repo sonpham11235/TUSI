@@ -1,6 +1,4 @@
-import numpy as np
 import networkx as nx
-import random
 
 def make_sample(is_positive: bool, source: str, target: str, path: tuple):
     template = "<|question|>{target_str} {source_str}<|answer|>{path_str} {answer}<|endoftext|>"
@@ -41,7 +39,7 @@ for i in range(1,200):
         if len(paths) > 0:
             print(f'Positive pair [{source},{target}]')
             for path in paths:
-                sample = make_sample(True, source, target, path)
+                sample = make_sample(True, source, target, [source, target])
                 if len(path) == 2:
                     ber_edge.append(sample)
                 else:
@@ -88,13 +86,13 @@ with open('./data/graph/bernoulli/edges.txt', 'w') as file:
     for sample in ber_edge:
         file.write(f'{sample}\n')
 
-with open('./data/graph/bernoulli/positive.txt', 'w') as file:
+with open('./data/graph/bernoulli/positive_direct.txt', 'w') as file:
     for sample in ber_positive_set:
         file.write(f'{sample}\n')
         
-with open('./data/graph/bernoulli/negative.txt', 'w') as file:
-    for sample in ber_negative_set:
-        file.write(f'{sample}\n')
+# with open('./data/graph/bernoulli/negative.txt', 'w') as file:
+#     for sample in ber_negative_set:
+#         file.write(f'{sample}\n')
 
 # with open('./data/graph/hierarchical/edges.txt', 'w') as file:
 #     for sample in hier_edge:

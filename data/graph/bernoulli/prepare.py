@@ -87,8 +87,8 @@ print(f"val has {len(val_ids):,} tokens")
 # export to bin files
 train_ids = np.concatenate([np.array(sample, dtype=np.uint16) for sample in train_ids])
 val_ids = np.concatenate([np.array(sample, dtype=np.uint16) for sample in val_ids])
-train_ids.tofile(os.path.join(os.path.dirname(__file__), 'train_direct.bin'))
-val_ids.tofile(os.path.join(os.path.dirname(__file__), 'val_direct.bin'))
+train_ids.tofile(os.path.join(os.path.dirname(__file__), 'train.bin'))
+val_ids.tofile(os.path.join(os.path.dirname(__file__), 'val.bin'))
 
 # train.bin has 18,054 tokens
 # val.bin has 1,804 tokens
